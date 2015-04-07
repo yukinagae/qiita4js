@@ -18,7 +18,6 @@ apis.forEach(function(api) {
     } else {
       url += api; // ex) http://qiita.com/api/v2/users
     }
-    console.log(url);
     return new Promise(function(resolve, reject) {
       request(url, function(error, response, body) {
           if(error || response.statusCode !== 200) {
