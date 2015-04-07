@@ -62,6 +62,7 @@ describe('Qiita4js', function() {
       done();
     });
   });
+  
   // - list stocked items
   // GET /api/v2/users/:user_id/stocks
   it('should request user stocked items', function(done) {
@@ -81,6 +82,7 @@ describe('Qiita4js', function() {
       done();
     });
   });
+
   // - get comment
   // GET /api/v2/comments/:id
   it('should request 1 comment', function(done) {
@@ -90,6 +92,7 @@ describe('Qiita4js', function() {
       done();
     });
   });
+
   // - list item comments
   // GET /api/v2/items/:item_id/comments
   it('should request item comments', function(done) {
