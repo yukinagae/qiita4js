@@ -5,8 +5,26 @@ var base_url = 'http://qiita.com/api/v2/';
 var apis = ['users', 'items', 'comments'];
 var more_apis = ['users_items', 'items_comments', 'users_stocks', 'tags_items'];
 
+// get request
+function get(url) {
+  return new Promise(function(resolve, reject) {
+    request(url, function(error, response, body) {
+        if(error || response.statusCode !== 200) {
+          reject(error);
+        } else {
+          resolve(JSON.parse(body));
+        }
+    });
+  });
+}
+
 // Qiita4js object
-function Qiita4js() {
+function Qiita4js(req) {
+  if(req) {
+    this.f = req;
+  } else {
+    this.f = get;
+  }
 }
 
 // available apis
@@ -18,15 +36,7 @@ apis.forEach(function(api) {
     } else {
       url += api; // ex) http://qiita.com/api/v2/users
     }
-    return new Promise(function(resolve, reject) {
-      request(url, function(error, response, body) {
-          if(error || response.statusCode !== 200) {
-            reject(error);
-          } else {
-            resolve(JSON.parse(body));
-          }
-      });
-    });
+    return this.f(url);
   };
 });
 
@@ -36,15 +46,7 @@ more_apis.forEach(function(more_api) {
     var url = base_url;
     var api = more_api.split('_');
     url += api[0] + '/' + param + '/' + api[1]; // ex) http://qiita.com/api/v2/users/yukinagae/items
-    return new Promise(function(resolve, reject) {
-      request(url, function(error, response, body) {
-          if(error || response.statusCode !== 200) {
-            reject(error);
-          } else {
-            resolve(JSON.parse(body));
-          }
-      });
-    });
+    return this.f(url);
   };
 });
 

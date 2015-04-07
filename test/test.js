@@ -8,6 +8,11 @@ var Qiita4js = require('..');
 
 describe('Qiita4js', function() {
 
+  // for dry-run function
+  function test(url) {
+    return url;
+  }
+
   it('should expose Qiita4js', function() {
     should.exist(Qiita4js);
     Qiita4js.should.be.type('function');
@@ -15,92 +20,74 @@ describe('Qiita4js', function() {
 
   // - get user
   // GET /api/v2/users/:id
-  it('should request 1 user', function(done) {
-    var qiita = new Qiita4js();
-    qiita.users('yukinagae').then(function(result) {
-      assert.equal(result.id, 'yukinagae');
-      done();
-    });
+  it('should request 1 user', function() {
+    var qiita = new Qiita4js(test);
+    var url = qiita.users('yukinagae');
+    assert.equal(url, 'http://qiita.com/api/v2/users/yukinagae');
   });
 
   // - list users
   // GET /api/v2/users
-  it('should request first 20 users', function(done) {
-    var qiita = new Qiita4js();
-    qiita.users().then(function(result) {
-      assert.equal(result.length, 20);
-      done();
-    });
+  it('should request first 20 users', function() {
+    var qiita = new Qiita4js(test);
+    var url = qiita.users();
+    assert.equal(url, 'http://qiita.com/api/v2/users');
   });
 
   // - get item
   // GET /api/v2/items/:id
-  it('should request 1 item', function(done) {
-    var qiita = new Qiita4js();
-    qiita.items('d2de7a3c0451cc96aa00').then(function(result) {
-      assert.equal(result.user.id, 'yukinagae');
-      done();
-    });
+  it('should request 1 item', function() {
+    var qiita = new Qiita4js(test);
+    var url = qiita.items('d2de7a3c0451cc96aa00');
+    assert.equal(url, 'http://qiita.com/api/v2/items/d2de7a3c0451cc96aa00');
   });
 
   // - list items
   // GET /api/v2/items
-  it('should request first 20 items', function(done) {
-    var qiita = new Qiita4js();
-    qiita.items().then(function(result) {
-      assert.equal(result.length, 20);
-      done();
-    });
+  it('should request first 20 items', function() {
+    var qiita = new Qiita4js(test);
+    var url = qiita.items();
+    assert.equal(url, 'http://qiita.com/api/v2/items');
   });
 
   // - list user items
   // GET /api/v2/users/:user_id/items
-  it('should request user items', function(done) {
-    var qiita = new Qiita4js();
-    qiita.users_items('yukinagae').then(function(result) {
-      assert.equal(result.length, 14);
-      done();
-    });
+  it('should request user items', function() {
+    var qiita = new Qiita4js(test);
+    var url = qiita.users_items('yukinagae');
+    assert.equal(url, 'http://qiita.com/api/v2/users/yukinagae/items');
   });
-  
+
   // - list stocked items
   // GET /api/v2/users/:user_id/stocks
-  it('should request user stocked items', function(done) {
-    var qiita = new Qiita4js();
-    qiita.users_items('yukinagae').then(function(result) {
-      assert.equal(result.length, 14);
-      done();
-    });
+  it('should request user stocked items', function() {
+    var qiita = new Qiita4js(test);
+    var url = qiita.users_stocks('yukinagae');
+    assert.equal(url, 'http://qiita.com/api/v2/users/yukinagae/stocks');
   });
 
   // - list tag items
   // GET /api/v2/tags/:id/items
-  it('should request tag items', function(done) {
-    var qiita = new Qiita4js();
-    qiita.tags_items('node.js').then(function(result) {
-      assert.equal(result.length, 20);
-      done();
-    });
+  it('should request tag items', function() {
+    var qiita = new Qiita4js(test);
+    var url = qiita.tags_items('node.js');
+    assert.equal(url, 'http://qiita.com/api/v2/tags/node.js/items');
   });
 
   // - get comment
   // GET /api/v2/comments/:id
-  it('should request 1 comment', function(done) {
-    var qiita = new Qiita4js();
-    qiita.comments('ba0a1b50b9803f38d200').then(function(result) {
-      assert.equal(result.user.id, 'yukinagae');
-      done();
-    });
+  it('should request 1 comment', function() {
+    var qiita = new Qiita4js(test);
+    var url = qiita.comments('ba0a1b50b9803f38d200');
+    assert.equal(url, 'http://qiita.com/api/v2/comments/ba0a1b50b9803f38d200');
   });
 
   // - list item comments
   // GET /api/v2/items/:item_id/comments
-  it('should request item comments', function(done) {
-    var qiita = new Qiita4js();
-    qiita.items_comments('d2de7a3c0451cc96aa00').then(function(result) {
-      assert.equal(result.length, 1);
-      done();
-    });
+  it('should request item comments', function() {
+    var qiita = new Qiita4js(test);
+    var url = qiita.items_comments('d2de7a3c0451cc96aa00');
+    assert.equal(url, 'http://qiita.com/api/v2/items/d2de7a3c0451cc96aa00/comments');
   });
 
   // TODO maybe
