@@ -14,3 +14,6 @@ TODO below apis will be implemented.
 - list tag items
 - list user items
 - list item comments
+
+## License
+MIT
