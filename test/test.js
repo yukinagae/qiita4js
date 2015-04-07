@@ -8,7 +8,7 @@ var Qiita4js = require('..');
 
 describe('Qiita4js', function() {
 
-  // for dry-run function
+  // dry-run function for test purpose
   function test(url) {
     return url;
   }

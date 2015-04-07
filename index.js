@@ -3,7 +3,7 @@ var request = require('request');
 // setting
 var base_url = 'http://qiita.com/api/v2/';
 var apis = ['users', 'items', 'comments'];
-var more_apis = ['users_items', 'items_comments', 'users_stocks', 'tags_items'];
+var divided_apis = ['users_items', 'items_comments', 'users_stocks', 'tags_items'];
 
 // get request
 function get(url) {
@@ -40,11 +40,11 @@ apis.forEach(function(api) {
   };
 });
 
-// available more apis
-more_apis.forEach(function(more_api) {
-  Qiita4js.prototype[more_api] = function(param) {
+// available apis divided by parameter
+divided_apis.forEach(function(divided_api) {
+  Qiita4js.prototype[divided_api] = function(param) {
     var url = base_url;
-    var api = more_api.split('_');
+    var api = divided_api.split('_');
     url += api[0] + '/' + param + '/' + api[1]; // ex) http://qiita.com/api/v2/users/yukinagae/items
     return this.f(url);
   };
