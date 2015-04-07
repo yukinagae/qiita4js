@@ -30,15 +30,6 @@ apis.forEach(function(api) {
   };
 });
 
-// test
-var qiita = new Qiita4js();
-var promise = qiita.users('yukinagae');
-promise.then(function(result) {
-  console.log(result); // "Stuff worked!"
-}, function(err) {
-  console.log(err); // Error: "It broke"
-});
-
 // export
 module.exports = Qiita4js;
 
