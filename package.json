@@ -1,0 +1,17 @@
+{
+  "name": "qiita4js",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": {
+    "name": "yukinagae",
+    "email": "yuki.nagae1130@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "request": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yukinagae/qiita4js.git"
+  }
+}
