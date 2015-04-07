@@ -58,22 +58,47 @@ describe('Qiita4js', function() {
   it('should request user items', function(done) {
     var qiita = new Qiita4js();
     qiita.users_items('yukinagae').then(function(result) {
-      console.log(result.length);
-      // assert.equal(result.length, 20);
+      assert.equal(result.length, 14);
+      done();
+    });
+  });
+  // - list stocked items
+  // GET /api/v2/users/:user_id/stocks
+  it('should request user stocked items', function(done) {
+    var qiita = new Qiita4js();
+    qiita.users_items('yukinagae').then(function(result) {
+      assert.equal(result.length, 14);
       done();
     });
   });
 
-
-  // TODO must
-  // - get comment
-  // GET /api/v2/comments/:id
-  // - list item comments
-  // GET /api/v2/items/:item_id/comments
-  // - list stocked items
-  // GET /api/v2/users/:user_id/stocks
   // - list tag items
   // GET /api/v2/tags/:id/items
+  it('should request tag items', function(done) {
+    var qiita = new Qiita4js();
+    qiita.tags_items('node.js').then(function(result) {
+      assert.equal(result.length, 20);
+      done();
+    });
+  });
+  // - get comment
+  // GET /api/v2/comments/:id
+  it('should request 1 comment', function(done) {
+    var qiita = new Qiita4js();
+    qiita.comments('ba0a1b50b9803f38d200').then(function(result) {
+      assert.equal(result.user.id, 'yukinagae');
+      done();
+    });
+  });
+  // - list item comments
+  // GET /api/v2/items/:item_id/comments
+  it('should request item comments', function(done) {
+    var qiita = new Qiita4js();
+    qiita.items_comments('d2de7a3c0451cc96aa00').then(function(result) {
+      assert.equal(result.length, 1);
+      done();
+    });
+  });
 
   // TODO maybe
   // - list following users

@@ -3,7 +3,7 @@ var request = require('request');
 // setting
 var base_url = 'http://qiita.com/api/v2/';
 var apis = ['users', 'items', 'comments'];
-var more_apis = ['users_items'];
+var more_apis = ['users_items', 'items_comments', 'users_stocks', 'tags_items'];
 
 // Qiita4js object
 function Qiita4js() {
