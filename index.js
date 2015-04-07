@@ -1,4 +1,3 @@
-// import
 var request = require('request');
 
 // setting
@@ -16,7 +15,7 @@ apis.forEach(function(api) {
     if(param) {
       url += api + '/' + param; // ex) http://qiita.com/api/v2/users/yukinagae
     } else {
-      url += api + '/'; // ex) http://qiita.com/api/v2/users/
+      url += api; // ex) http://qiita.com/api/v2/users
     }
     return new Promise(function(resolve, reject) {
       request(url, function(error, response, body) {
@@ -30,15 +29,4 @@ apis.forEach(function(api) {
   };
 });
 
-// export
 module.exports = Qiita4js;
-
-// TODO
-// - get user
-// - get item
-// - get comment
-// - list users
-// - list items
-// - list tag items
-// - list user items
-// - list item comments
