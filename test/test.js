@@ -33,17 +33,43 @@ describe('Qiita4js', function() {
     });
   });
 
+  // - get item
+  // GET /api/v2/items/:id
+  it('should request 1 item', function(done) {
+    var qiita = new Qiita4js();
+    qiita.items('d2de7a3c0451cc96aa00').then(function(result) {
+      assert.equal(result.user.id, 'yukinagae');
+      done();
+    });
+  });
+
+  // - list items
+  // GET /api/v2/items
+  it('should request first 20 items', function(done) {
+    var qiita = new Qiita4js();
+    qiita.items().then(function(result) {
+      assert.equal(result.length, 20);
+      done();
+    });
+  });
+
+  // - list user items
+  // GET /api/v2/users/:user_id/items
+  it('should request user items', function(done) {
+    var qiita = new Qiita4js();
+    qiita.users_items('yukinagae').then(function(result) {
+      console.log(result.length);
+      // assert.equal(result.length, 20);
+      done();
+    });
+  });
+
+
   // TODO must
   // - get comment
   // GET /api/v2/comments/:id
   // - list item comments
   // GET /api/v2/items/:item_id/comments
-  // - get item
-  // GET /api/v2/items/:id
-  // - list items
-  // GET /api/v2/items
-  // - list user items
-  // GET /api/v2/users/:user_id/items
   // - list stocked items
   // GET /api/v2/users/:user_id/stocks
   // - list tag items
