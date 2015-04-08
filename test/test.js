@@ -81,24 +81,4 @@ describe('Qiita4js', function() {
     assert.equal(url, 'http://qiita.com/api/v2/items/d2de7a3c0451cc96aa00/comments');
   });
 
-  // TODO maybe
-  // - list following users
-  // GET /api/v2/users/:user_id/followees
-  // - list followed users
-  // GET /api/v2/users/:user_id/followers
-  // - list stocked users
-  // GET /api/v2/items/:item_id/stockers
-  // - if follow user
-  // GET /api/v2/users/:user_id/following
-  // - get tag
-  // GET /api/v2/tags/:id
-  // - list tags
-  // GET /api/v2/tags
-  // - list following tags
-  // GET /api/v2/users/:user_id/following_tags
-  // - if follow tag
-  // GET /api/v2/tags/:id/following
-  // - if stock item
-  // GET /api/v2/items/:item_id/stock
-
 });
