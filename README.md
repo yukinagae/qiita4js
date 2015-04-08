@@ -1,5 +1,6 @@
 # qiita4js
 
+[![NPM version](https://badge.fury.io/js/qiita4js.svg)](https://npmjs.org/package/qiita4js)
 [![Build Status](https://travis-ci.org/yukinagae/qiita4js.svg?branch=master)](https://travis-ci.org/yukinagae/qiita4js)
 
 Simple Qiita API v2 client written in JavaScript.
