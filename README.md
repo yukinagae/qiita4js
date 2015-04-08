@@ -1,4 +1,7 @@
 # qiita4js
+
+[![Build Status](https://travis-ci.org/yukinagae/qiita4js.svg?branch=master)](https://travis-ci.org/yukinagae/qiita4js)
+
 Simple Qiita API v2 client written in JavaScript.
 
 Reference: [Qiita API v2](http://qiita.com/api/v2/docs)
